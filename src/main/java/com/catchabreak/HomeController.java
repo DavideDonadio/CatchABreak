@@ -19,26 +19,59 @@ public class HomeController {
     private Button restartButton = new Button();
     
     private int counter = 0;
+    private int breaksCounter = 0;
+    private int TIMEBEFOREBREAK = 5;
+    private int BREAKTIME = 30;
+    private int numOfBreaks = 0;
+    private int numGlassesWater = 0;
     Boolean isCounterPaused = false;
 
-    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> incrementCounter()));
+    Timeline normalTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> incrementCounter()));
+    Timeline breakTimeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementCounter()));
 
     public void initialize() {
         // Initialize the counter label
-        startCounter();
+        startCounter(normalTimeline);
     }
 
     @FXML
-    private void startCounter() {
-        // Create a timeline to update the counter every second;
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+    private void startCounter(Timeline t) {
+
+        t.setCycleCount(Timeline.INDEFINITE);
+        setTimer(counter);
+        t.play();
     }
 
     private void incrementCounter() {
         // Update the counter label with the current counter value
-        counter+=1;
-        counterLabel.setText(String.format("%02d:%02d:%02d", counter / 3600, (counter % 3600) / 60, counter % 60));
+        breaksCounter = ++counter;
+        setTimer(counter);
+        if(breaksCounter == TIMEBEFOREBREAK + 1) handleStartBreak();
+    }
+
+    private void decrementCounter(){
+
+        counter--;
+        setTimer(counter);
+        if(counter == 0) handleStopBreak();
+    }
+
+    private void handleStartBreak(){
+
+        normalTimeline.stop();
+        breaksCounter = 0;
+        counter = BREAKTIME;
+        numOfBreaks++;
+        setTimer(BREAKTIME);
+        startCounter(breakTimeLine);
+    }
+
+    private void handleStopBreak(){
+
+    }
+
+    private void setTimer(int seconds){
+        counterLabel.setText(String.format("%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60));
     }
     
     @FXML
@@ -49,12 +82,12 @@ public class HomeController {
         if(isCounterPaused){
 
             manageCounterButton.setText("Start");
-            timeline.pause();
+            normalTimeline.pause();
         }
         else{
 
             manageCounterButton.setText("Stop");
-            timeline.play();
+            normalTimeline.play();
         }
     }
 
@@ -63,7 +96,7 @@ public class HomeController {
 
         counter = 0;
         counterLabel.setText(String.format("%02d:%02d:%02d", counter / 3600, (counter % 3600) / 60, counter % 60));
-        timeline.playFromStart();
+        normalTimeline.playFromStart();
     }
 
     @FXML

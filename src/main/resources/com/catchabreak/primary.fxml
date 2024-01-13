@@ -1,66 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catchabreak.HomeController">
-   <children>
-      <Button fx:id="settingsButton" layoutX="453.0" layoutY="401.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="70.0" text="Settings">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Label fx:id="titleLabel" layoutX="167.0" layoutY="14.0" text="It's time to catch a break!">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="counterLabel" layoutX="212.0" layoutY="77.0" text="00:00:00">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
-      <Label layoutX="216.0" layoutY="255.0" text="Today's stats:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="308.0" text="Number of breaks:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="329.0" text="Glasses of water: ">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="350.0" text="Mouse clicks: ">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="371.0" text="Online since: ">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="391.0" text="Longest break:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Button fx:id="restartButton" layoutX="216.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#restartCounter" text="Restart">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="manageCounterButton" layoutX="298.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#manageCounter" text="Stop">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
-</Pane>
+<SplitPane dividerPositions="0.1826625386996904" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catchabreak.HomeController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="58.0" style="-fx-background-color: #A1B2D3;">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="14.0">
+               <image>
+                  <Image url="@../../../../../../../../Desktop/settings.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="69.0">
+               <image>
+                  <Image url="@../../../../../../../../Desktop/bar-graph.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="124.0">
+               <image>
+                  <Image url="@../../../../../../../../Desktop/information.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="156.0" prefWidth="265.0" style="-fx-background-color: #AEE0EC;">
+         <children>
+            <Label layoutX="47.0" layoutY="14.0" text="Catch a Break!">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="counterLabel" layoutX="69.0" layoutY="63.0" text="00:00:00">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

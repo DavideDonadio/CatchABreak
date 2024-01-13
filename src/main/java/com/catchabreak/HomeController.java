@@ -11,92 +11,103 @@ import javafx.scene.control.Label;
 
 public class HomeController {
 
+
+    // VARIABLES ------------------------
+
     @FXML
-    private Label counterLabel = new Label();
+    private Label timerLabel = new Label();
     @FXML
-    private Button manageCounterButton = new Button();
+    private Button manageTimerButton = new Button();
     @FXML
-    private Button restartButton = new Button();
-    
-    private int counter = 0;
-    private int breaksCounter = 0;
-    private int TIMEBEFOREBREAK = 5;
-    private int BREAKTIME = 30;
+    private Button restartTimerButton = new Button();
+
+    private int timerSeconds = 0;
+    private int WORKTIME = 5;
+    private int BREAKTIME = 5;
     private int numOfBreaks = 0;
     private int numGlassesWater = 0;
-    Boolean isCounterPaused = false;
+    Boolean isTimerPaused = false;
+    Boolean inABreak = false;
 
-    Timeline normalTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> incrementCounter()));
-    Timeline breakTimeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementCounter()));
+    Timeline normalTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> incrementTimer()));
+    Timeline breakTimeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
+
+    // ----------------------------------
 
     public void initialize() {
-        // Initialize the counter label
-        startCounter(normalTimeline);
+        // Initialize the timer label
+        startTimer(normalTimeline);
     }
 
     @FXML
-    private void startCounter(Timeline t) {
+    private void startTimer(Timeline t) {
 
         t.setCycleCount(Timeline.INDEFINITE);
-        setTimer(counter);
+        setTimer(timerSeconds);
         t.play();
     }
 
-    private void incrementCounter() {
-        // Update the counter label with the current counter value
-        breaksCounter = ++counter;
-        setTimer(counter);
-        if(breaksCounter == TIMEBEFOREBREAK + 1) handleStartBreak();
-    }
-
-    private void decrementCounter(){
-
-        counter--;
-        setTimer(counter);
-        if(counter == 0) handleStopBreak();
-    }
-
-    private void handleStartBreak(){
-
-        normalTimeline.stop();
-        breaksCounter = 0;
-        counter = BREAKTIME;
-        numOfBreaks++;
-        setTimer(BREAKTIME);
-        startCounter(breakTimeLine);
-    }
-
-    private void handleStopBreak(){
-
-    }
-
     private void setTimer(int seconds){
-        counterLabel.setText(String.format("%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60));
+        timerLabel.setText(String.format("%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60));
     }
-    
+
+    private void incrementTimer() {
+        // Update the timer label with the current counter value
+        timerSeconds++;
+        setTimer(timerSeconds);
+        if(timerSeconds % (WORKTIME + 1) == 0) handleStartBreak();
+    }
+
+    private void decrementTimer(){
+
+        timerSeconds--;
+        setTimer(timerSeconds);
+        if(timerSeconds == 0) handleStopBreak();
+    }
+
     @FXML
-    private void manageCounter(){
+    private void manageTimer(){
 
-        isCounterPaused = !isCounterPaused;
+        isTimerPaused = !isTimerPaused;
 
-        if(isCounterPaused){
+        if(isTimerPaused){
 
-            manageCounterButton.setText("Start");
+            manageTimerButton.setText("Start");
             normalTimeline.pause();
         }
         else{
 
-            manageCounterButton.setText("Stop");
+            manageTimerButton.setText("Stop");
             normalTimeline.play();
         }
     }
 
     @FXML
-    private void restartCounter(){
+    private void restartTimer(){
 
-        counter = 0;
-        counterLabel.setText(String.format("%02d:%02d:%02d", counter / 3600, (counter % 3600) / 60, counter % 60));
-        normalTimeline.playFromStart();
+        if(inABreak){
+
+            timerSeconds = BREAKTIME;
+            breakTimeLine.playFromStart();
+        }
+        else{
+
+            timerSeconds = 0;
+            normalTimeline.playFromStart();
+        }
+        setTimer(timerSeconds);
+    }
+
+    private void handleStartBreak(){
+
+        normalTimeline.stop();
+        timerSeconds = BREAKTIME;
+        numOfBreaks++;
+        setTimer(BREAKTIME);
+        startTimer(breakTimeLine);
+    }
+
+    private void handleStopBreak(){
     }
 
     @FXML

@@ -34,7 +34,7 @@
                   <Font size="28.0" />
                </font>
             </Label>
-            <Label fx:id="counterLabel" layoutX="69.0" layoutY="63.0" text="00:00:00">
+            <Label fx:id="timerLabel" layoutX="69.0" layoutY="63.0" text="00:00:00">
                <font>
                   <Font size="36.0" />
                </font>

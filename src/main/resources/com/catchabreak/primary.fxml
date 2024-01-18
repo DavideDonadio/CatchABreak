@@ -12,17 +12,17 @@
    <children>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #A1B2D3;">
          <children>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/settings.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="13.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="13.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/stats.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="13.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="13.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/info.png" />
                </image>

@@ -5,9 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import com.dustinredmond.fxtrayicon.FXTrayIcon;
 
 import java.io.IOException;
-
 /**
  * JavaFX App
  */
@@ -17,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         scene = new Scene(loadFXML("primary"), 350, 200);
         stage.setScene(scene);
         stage.show();

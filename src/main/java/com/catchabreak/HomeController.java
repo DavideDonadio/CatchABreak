@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 
 public class HomeController {
 
-
     // VARIABLES ------------------------
 
     @FXML
@@ -22,8 +21,8 @@ public class HomeController {
     private Button restartTimerButton = new Button();
 
     private int timerSeconds = 0;
-    private int WORKTIME = 1200;
-    private int BREAKTIME = 300;
+    private int WORKTIME = 5;
+    private int BREAKTIME = 5;
     private int numOfBreaks = 0;
     private int numGlassesWater = 0;
     Boolean isTimerPaused = false;
@@ -100,6 +99,8 @@ public class HomeController {
 
     private void handleStartBreak(){
 
+        TrayController.sendStartBreakNotification();
+        
         inABreak = true;
         normalTimeline.stop();
         timerSeconds = BREAKTIME;
@@ -110,6 +111,7 @@ public class HomeController {
 
     private void handleStopBreak(){
 
+        TrayController.sendStopBreakNotification();
         inABreak = false;
     }
 

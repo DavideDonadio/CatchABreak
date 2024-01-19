@@ -14,13 +14,12 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private TrayController trayController = new TrayController();
 
     @Override
     public void start(Stage stage) throws IOException {
 
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
-        trayController.setupTray(stage); // Tray setup
+        TrayController.setupTray(stage);
 
         scene = new Scene(loadFXML("primary"), 350, 200);
         //scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); // Non sembra funzionare con i menu items dell'icona nel tray
@@ -40,5 +39,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

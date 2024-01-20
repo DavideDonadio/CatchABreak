@@ -21,8 +21,8 @@ public class HomeController {
     private Button restartTimerButton = new Button();
 
     private int timerSeconds = 0;
-    private int WORKTIME = 5;
-    private int BREAKTIME = 5;
+    private int WORKTIME = 15;
+    private int BREAKTIME = 8;
     private int numOfBreaks = 0;
     private int numGlassesWater = 0;
     Boolean isTimerPaused = false;
@@ -61,7 +61,7 @@ public class HomeController {
 
         timerSeconds--;
         setTimer(timerSeconds);
-        if(timerSeconds == 0) handleStopBreak();
+        if(timerSeconds == -1) handleStopBreak();
     }
 
     @FXML
@@ -100,19 +100,24 @@ public class HomeController {
     private void handleStartBreak(){
 
         TrayController.sendStartBreakNotification();
-        
+
         inABreak = true;
         normalTimeline.stop();
         timerSeconds = BREAKTIME;
         numOfBreaks++;
-        setTimer(BREAKTIME);
+        setTimer(timerSeconds);
         startTimer(breakTimeLine);
     }
 
     private void handleStopBreak(){
 
         TrayController.sendStopBreakNotification();
+
         inABreak = false;
+        breakTimeLine.stop();
+        timerSeconds = 0;
+        setTimer(timerSeconds);
+        startTimer(normalTimeline);
     }
 
     @FXML

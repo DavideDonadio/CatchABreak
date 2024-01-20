@@ -3,7 +3,6 @@ package com.catchabreak;
 import com.dustinredmond.fxtrayicon.FXTrayIcon;
 
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 

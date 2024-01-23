@@ -2,7 +2,6 @@ package com.catchabreak;
 
 import java.io.IOException;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -24,31 +23,28 @@ public class HomeController {
     @FXML
     private ImageView restartTimerImage = new ImageView();
 
-    private int WORKTIME = 300;
+    private int WORKTIME = 10;
     private int timerSeconds = WORKTIME;
-    private int BREAKTIME = 60;
+    private int BREAKTIME = 5;
     private int numOfBreaks = 0;
     private int numGlassesWater = 0;
-    Boolean isTimerPaused = false;
     Boolean inABreak = false;
 
-    Timeline normalTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
-    Timeline breakTimeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
+    Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
 
     // ----------------------------------
 
     public void initialize() {
         // Initialize the timer label
-        startTimer(normalTimeline);
-
+        startTimer(timeLine);
 
         // Initialize images event handlers	
         playTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            handlePlayImageClick();
+            timeLine.play();
         });
 
         stopTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            handleStopImageClick();
+            timeLine.pause();
         });
 
         restartTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
@@ -87,11 +83,11 @@ public class HomeController {
         TrayController.sendStartBreakNotification();
 
         inABreak = true;
-        normalTimeline.pause();
+        timeLine.pause();
         timerSeconds = BREAKTIME;
         numOfBreaks++;
         setTimer(timerSeconds);
-        startTimer(breakTimeLine);
+        startTimer(timeLine);
     }
 
     private void handleStopBreak(){
@@ -99,28 +95,10 @@ public class HomeController {
         TrayController.sendStopBreakNotification();
 
         inABreak = false;
-        breakTimeLine.pause();
+        timeLine.pause();
         timerSeconds = WORKTIME;
         setTimer(timerSeconds);
-        startTimer(normalTimeline);
-    }
-
-    private void handleStopImageClick() {
-        
-        if(normalTimeline.getStatus() == Animation.Status.RUNNING)
-            normalTimeline.pause();
-        
-        else if(breakTimeLine.getStatus() == Animation.Status.RUNNING)
-            breakTimeLine.pause();
-    }
-
-    private void handlePlayImageClick() {
-
-        if(normalTimeline.getStatus() == Animation.Status.PAUSED)
-            normalTimeline.play();
-        
-        else if(breakTimeLine.getStatus() == Animation.Status.PAUSED)
-            breakTimeLine.play();
+        startTimer(timeLine);
     }
 
     private void handleRestartImageClick() {
@@ -129,13 +107,13 @@ public class HomeController {
 
             timerSeconds = BREAKTIME;
             setTimer(timerSeconds);
-            startTimer(breakTimeLine);
+            startTimer(timeLine);
         }
         else{
 
             timerSeconds = WORKTIME;
             setTimer(timerSeconds);
-            startTimer(normalTimeline);
+            startTimer(timeLine);
         }
     }
 

@@ -17,6 +17,10 @@ public class HomeController {
     @FXML
     private Label timerLabel = new Label();
     @FXML
+    private Label workLabel = new Label();
+    @FXML
+    private Label breakLabel = new Label();
+    @FXML
     private ImageView stopTimerImage = new ImageView();
     @FXML
     private ImageView playTimerImage = new ImageView();
@@ -27,7 +31,6 @@ public class HomeController {
     private int timerSeconds = WORKTIME;
     private int BREAKTIME = 5;
     private int numOfBreaks = 0;
-    private int numGlassesWater = 0;
     Boolean inABreak = false;
 
     Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
@@ -82,10 +85,14 @@ public class HomeController {
 
         TrayController.sendStartBreakNotification();
 
+        workLabel.setVisible(false);
+        breakLabel.setVisible(true);
+
         inABreak = true;
+        numOfBreaks++;
+        
         timeLine.pause();
         timerSeconds = BREAKTIME;
-        numOfBreaks++;
         setTimer(timerSeconds);
         startTimer(timeLine);
     }
@@ -93,6 +100,9 @@ public class HomeController {
     private void handleStopBreak(){
 
         TrayController.sendStopBreakNotification();
+
+        breakLabel.setVisible(false);
+        workLabel.setVisible(true);
 
         inABreak = false;
         timeLine.pause();
@@ -103,18 +113,11 @@ public class HomeController {
 
     private void handleRestartImageClick() {
         
-        if(inABreak){
+        if(inABreak) timerSeconds = BREAKTIME;
+        else timerSeconds = WORKTIME;
 
-            timerSeconds = BREAKTIME;
-            setTimer(timerSeconds);
-            startTimer(timeLine);
-        }
-        else{
-
-            timerSeconds = WORKTIME;
-            setTimer(timerSeconds);
-            startTimer(timeLine);
-        }
+        setTimer(timerSeconds);
+        startTimer(timeLine);
     }
 
     @FXML

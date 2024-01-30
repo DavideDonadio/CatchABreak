@@ -20,9 +20,9 @@ public class App extends Application {
 
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
         TrayController.setupTray(stage);
+        TimerController.startTimer();
 
         scene = new Scene(loadFXML("primary"), 350, 220);
-        //scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm()); // Non sembra funzionare con i menu items dell'icona nel tray
         stage.setScene(scene);
         stage.show();
     }

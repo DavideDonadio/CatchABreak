@@ -8,9 +8,9 @@ import javafx.util.Duration;
 public class TimerController {
 
     static Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
-    static private int WORKTIME = 10;
+    static private int WORKTIME = 1200;
     static private int timerSeconds = WORKTIME;
-    static private int BREAKTIME = 5;
+    static private int BREAKTIME = 300;
     static private int numOfBreaks = 0;
     static Boolean inABreak = false;
 

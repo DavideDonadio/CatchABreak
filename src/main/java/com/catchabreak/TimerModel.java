@@ -6,8 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class TimerModel {
 
     private static final TimerModel instance = new TimerModel();
-
-    private final IntegerProperty timerSeconds = new SimpleIntegerProperty(10);
+    private final IntegerProperty timerSeconds = new SimpleIntegerProperty(1200);
 
     private TimerModel() {
         // Private constructor to enforce singleton pattern
@@ -21,6 +20,7 @@ public class TimerModel {
         return timerSeconds.get();
     }
 
+    @SuppressWarnings("exports")
     public IntegerProperty timerSecondsProperty() {
         return timerSeconds;
     }

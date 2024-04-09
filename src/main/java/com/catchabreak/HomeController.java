@@ -28,20 +28,18 @@ public class HomeController {
     @FXML
     private ImageView restartTimerImage = new ImageView();
 
-    private TimerModel model = TimerModel.getInstance();
+    private TimerModel timerModel = TimerModel.getInstance();
 
     // ----------------------------------
 
     public void initialize() {
 
-        setTimer(model.getTimerSeconds());
+        setTimer(timerModel.getTimerSeconds());
 
-        model.timerSecondsProperty().addListener((observable, oldValue, newValue) -> {
-            // Update UI based on the new timer value
+        timerModel.timerSecondsProperty().addListener((observable, oldValue, newValue) -> {
             setTimer(newValue.intValue());
         });
 
-        // Initialize images event handlers	
         playTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
             TimerController.timeLine.play();
         });

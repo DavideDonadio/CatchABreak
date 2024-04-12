@@ -6,7 +6,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 
-public class TrayController{
+public final class TrayController{
 
     static FXTrayIcon icon;
 

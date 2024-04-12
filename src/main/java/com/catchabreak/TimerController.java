@@ -74,4 +74,24 @@ public class TimerController {
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
     }
+
+    static int getWorkTimeMinutes(){
+
+        return (WORKTIME / 60);
+    }
+
+    static int getBreakTimeMinutes(){
+
+        return (BREAKTIME / 60);
+    }
+
+    static void setWorkTime(int minutes){
+
+        WORKTIME =  minutes * 60;
+    }
+
+    static void setBreakTime(int minutes){
+
+        BREAKTIME =  minutes * 60;
+    }
 }

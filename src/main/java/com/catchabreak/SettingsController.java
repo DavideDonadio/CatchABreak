@@ -1,17 +1,41 @@
 package com.catchabreak;
 
 import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class SettingsController {
 
     @FXML
-    private Button backButton = new Button();
+    private Button backButton;
+    @FXML
+    private TextField workTextField;
+    @FXML
+    private TextField breakTextField;
+    
+
+    public void initialize() {
+
+        workTextField.setText(Integer.toString(TimerController.getWorkTimeMinutes()));
+        breakTextField.setText(Integer.toString(TimerController.getBreakTimeMinutes()));
+
+        workTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            TimerController.setWorkTime(Integer.valueOf(newValue));
+        });
+
+        breakTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            
+            TimerController.setBreakTime(Integer.valueOf(newValue));
+        });
+    }
+
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -22,4 +46,6 @@ public class SettingsController {
         Stage stage = (Stage)backButton.getScene().getWindow();
         stage.setScene(scene);
     }
+
+
 }

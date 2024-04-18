@@ -32,6 +32,7 @@ public class SettingsController {
         breakTextField.setText(Integer.toString(TimerController.getBreakTimeMinutes()));
     }
 
+    // TODO: USER INPUT VALIDATION
     @FXML
     public void saveSettings(MouseEvent event) throws IOException {
 

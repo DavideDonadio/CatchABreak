@@ -14,7 +14,6 @@ public class TimerController {
 
     static private int WORKTIME = Integer.parseInt(prefs.get("workTimeSeconds", "1200"));
     static private int BREAKTIME = Integer.parseInt(prefs.get("breakTimeSeconds", "500"));
-    static private int timerSeconds = WORKTIME;
     static private int numOfBreaks = 0;
     static Boolean inABreak = false;
 
@@ -26,19 +25,16 @@ public class TimerController {
         numOfBreaks++;
         
         timeLine.pause();
-        timerSeconds = BREAKTIME;
+        TimerModel.setTimerSeconds(BREAKTIME);
         startTimer();
-
-        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void handleRestartImageClick() {
 
-        if(inABreak) timerSeconds = BREAKTIME;
-        else timerSeconds = WORKTIME;
+        if(inABreak) TimerModel.setTimerSeconds(BREAKTIME);
+        else TimerModel.setTimerSeconds(WORKTIME);
 
         startTimer();
-        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void handleStopBreak() {
@@ -47,10 +43,8 @@ public class TimerController {
 
         inABreak = false;
         timeLine.pause();
-        timerSeconds = WORKTIME;
+        TimerModel.setTimerSeconds(WORKTIME);
         startTimer();
-
-        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void decrementTimer() {

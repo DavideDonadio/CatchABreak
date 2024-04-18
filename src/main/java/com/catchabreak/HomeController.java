@@ -32,7 +32,7 @@ public class HomeController {
 
     public void initialize() {
 
-        setUITimer(TimerController.getWorkTimeSeconds());
+        setUITimer(TimerModel.getTimerSeconds());
 
         // Modifies timer seconds on the UI every time timerSeconds gets updated
         TimerModel.timerSecondsProperty().addListener((observable, oldValue, newValue) ->

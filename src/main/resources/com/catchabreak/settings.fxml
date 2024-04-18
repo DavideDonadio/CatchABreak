@@ -8,42 +8,38 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0"
-      prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.catchabreak.SettingsController">
-   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="350.0"
-               style="-fx-background-color: #AEE0EC;">
-      <Label layoutX="118.0" text="Settings">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catchabreak.SettingsController">
+   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="350.0" style="-fx-background-color: #AEE0EC;">
+      <Label layoutX="120.0" text="Settings">
          <font>
-            <Font size="32.0"/>
+            <Font size="32.0" />
          </font>
       </Label>
-      <CheckBox layoutX="133.0" layoutY="189.0" mnemonicParsing="false" text="On startup"/>
+      <CheckBox layoutX="253.0" layoutY="47.0" mnemonicParsing="false" text="On startup" />
       <Label layoutX="65.0" layoutY="90.0" text="Work time:">
          <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="65.0" layoutY="121.0" text="Break time:">
          <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="185.0" mnemonicParsing="false"
-              onMouseClicked="#switchToPrimary" prefHeight="25.0" prefWidth="57.0" text="Back"/>
-      <TextField fx:id="workTextField" layoutX="147.0" layoutY="88.0" prefHeight="25.0" prefWidth="57.0"/>
-      <TextField fx:id="breakTextField" layoutX="147.0" layoutY="119.0" prefHeight="25.0" prefWidth="57.0"/>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#switchToPrimary" prefHeight="25.0" prefWidth="57.0" text="Back" />
+      <TextField fx:id="workTextField" layoutX="147.0" layoutY="88.0" prefHeight="25.0" prefWidth="57.0" />
+      <TextField fx:id="breakTextField" layoutX="147.0" layoutY="119.0" prefHeight="25.0" prefWidth="57.0" />
       <Label layoutX="212.0" layoutY="90.0" text="minutes">
          <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="212.0" layoutY="121.0" text="minutes">
          <font>
-            <Font size="15.0"/>
+            <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="saveButton" layoutX="279.0" layoutY="185.0" mnemonicParsing="false"
-              onMouseClicked="#saveSettings" prefHeight="25.0" prefWidth="57.0" text="Save"/>
+      <Button fx:id="saveButton" layoutX="279.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="25.0" prefWidth="57.0" text="Save" />
+      <CheckBox layoutX="253.0" layoutY="20.0" mnemonicParsing="false" text="Dark mode" />
    </AnchorPane>
 </Pane>

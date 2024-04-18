@@ -4,14 +4,17 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
+import java.util.prefs.Preferences;
 
 
 public class TimerController {
 
     static Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
-    static private int WORKTIME = 1200;
+    static Preferences prefs = Preferences.userNodeForPackage(TimerController.class);
+
+    static private int WORKTIME = Integer.parseInt(prefs.get("workTimeSeconds", "1200"));
+    static private int BREAKTIME = Integer.parseInt(prefs.get("breakTimeSeconds", "500"));
     static private int timerSeconds = WORKTIME;
-    static private int BREAKTIME = 300;
     static private int numOfBreaks = 0;
     static Boolean inABreak = false;
 
@@ -95,12 +98,12 @@ public class TimerController {
         return BREAKTIME;
     }
 
-    static void setWorkTime(int minutes){
+    static void setWorkTimeMinutes(int minutes){
 
         WORKTIME =  minutes * 60;
     }
 
-    static void setBreakTime(int minutes){
+    static void setBreakTimeMinutes(int minutes){
 
         BREAKTIME =  minutes * 60;
     }

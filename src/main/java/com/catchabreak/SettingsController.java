@@ -1,5 +1,6 @@
 package com.catchabreak;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -8,30 +9,39 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.util.prefs.Preferences;
 
 public class SettingsController {
 
     @FXML
     private Button backButton;
     @FXML
+    private Button saveButton;
+    @FXML
     private TextField workTextField;
     @FXML
     private TextField breakTextField;
-    
+
+    Preferences prefs = Preferences.userNodeForPackage(SettingsController.class);
 
     public void initialize() {
 
         workTextField.setText(Integer.toString(TimerController.getWorkTimeMinutes()));
         breakTextField.setText(Integer.toString(TimerController.getBreakTimeMinutes()));
-
-        workTextField.textProperty().addListener((observable, oldValue, newValue) ->
-                TimerController.setWorkTime(Integer.parseInt(newValue)));
-
-        breakTextField.textProperty().addListener((observable, oldValue, newValue) ->
-                TimerController.setBreakTime(Integer.parseInt(newValue)));
     }
 
+    @FXML
+    public void saveSettings(MouseEvent event) throws IOException {
+
+        TimerController.setBreakTimeMinutes(Integer.parseInt(breakTextField.getText()));
+        prefs.put("breakTimeSeconds", Integer.toString(TimerController.getBreakTimeSeconds()));
+
+        TimerController.setWorkTimeMinutes(Integer.parseInt(workTextField.getText()));
+        prefs.put("workTimeSeconds", Integer.toString(TimerController.getWorkTimeSeconds()));
+
+    }
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -42,6 +52,4 @@ public class SettingsController {
         Stage stage = (Stage)backButton.getScene().getWindow();
         stage.setScene(scene);
     }
-
-
 }

@@ -20,10 +20,10 @@ public class App extends Application {
 
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
         TrayController.setupTray(stage);
-        TimerController.startTimer();
 
         scene = new Scene(loadFXML("primary"), 350, 220);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

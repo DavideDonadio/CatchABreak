@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
 
+
 public class TimerController {
 
     static Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
@@ -25,12 +26,7 @@ public class TimerController {
         timerSeconds = BREAKTIME;
         startTimer();
 
-        TimerModel.getInstance().setTimerSeconds(timerSeconds);
-    }
-
-    static int getTimerSeconds(){
-
-        return timerSeconds;
+        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void handleRestartImageClick() {
@@ -39,8 +35,7 @@ public class TimerController {
         else timerSeconds = WORKTIME;
 
         startTimer();
-        
-        TimerModel.getInstance().setTimerSeconds(timerSeconds);
+        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void handleStopBreak() {
@@ -52,15 +47,14 @@ public class TimerController {
         timerSeconds = WORKTIME;
         startTimer();
 
-        TimerModel.getInstance().setTimerSeconds(timerSeconds);
+        TimerModel.setTimerSeconds(timerSeconds);
     }
 
     static void decrementTimer() {
 
-        TimerModel model = TimerModel.getInstance();
-        model.setTimerSeconds(model.getTimerSeconds() - 1);
+        TimerModel.setTimerSeconds(TimerModel.getTimerSeconds() - 1);
 
-        if (model.getTimerSeconds() == -1) {
+        if (TimerModel.getTimerSeconds() == -1) {
             if (!inABreak) 
                 handleStartBreak();
             else 
@@ -75,6 +69,12 @@ public class TimerController {
         timeLine.play();
     }
 
+    @FXML
+    static void pauseTimer() {
+
+        timeLine.pause();
+    }
+
     static int getWorkTimeMinutes(){
 
         return (WORKTIME / 60);
@@ -83,6 +83,16 @@ public class TimerController {
     static int getBreakTimeMinutes(){
 
         return (BREAKTIME / 60);
+    }
+
+    static int getWorkTimeSeconds(){
+
+        return WORKTIME;
+    }
+
+    static int getBreakTimeSeconds(){
+
+        return BREAKTIME;
     }
 
     static void setWorkTime(int minutes){

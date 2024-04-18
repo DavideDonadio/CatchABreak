@@ -25,15 +25,11 @@ public class SettingsController {
         workTextField.setText(Integer.toString(TimerController.getWorkTimeMinutes()));
         breakTextField.setText(Integer.toString(TimerController.getBreakTimeMinutes()));
 
-        workTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+        workTextField.textProperty().addListener((observable, oldValue, newValue) ->
+                TimerController.setWorkTime(Integer.parseInt(newValue)));
 
-            TimerController.setWorkTime(Integer.valueOf(newValue));
-        });
-
-        breakTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            
-            TimerController.setBreakTime(Integer.valueOf(newValue));
-        });
+        breakTextField.textProperty().addListener((observable, oldValue, newValue) ->
+                TimerController.setBreakTime(Integer.parseInt(newValue)));
     }
 
 

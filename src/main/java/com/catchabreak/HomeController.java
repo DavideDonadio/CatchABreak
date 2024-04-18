@@ -28,32 +28,27 @@ public class HomeController {
     @FXML
     private ImageView restartTimerImage = new ImageView();
 
-    private TimerModel timerModel = TimerModel.getInstance();
-
     // ----------------------------------
 
     public void initialize() {
 
-        setTimer(timerModel.getTimerSeconds());
+        setUITimer(TimerController.getWorkTimeSeconds());
 
-        timerModel.timerSecondsProperty().addListener((observable, oldValue, newValue) -> {
-            setTimer(newValue.intValue());
-        });
+        // Modifies timer seconds on the UI every time timerSeconds gets updated
+        TimerModel.timerSecondsProperty().addListener((observable, oldValue, newValue) ->
+                setUITimer(newValue.intValue()));
 
-        playTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            TimerController.timeLine.play();
-        });
+        playTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                TimerController.startTimer());
 
-        stopTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            TimerController.timeLine.pause();
-        });
+        stopTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                TimerController.pauseTimer());
 
-        restartTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            TimerController.handleRestartImageClick();
-        });
+        restartTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
+                TimerController.handleRestartImageClick());
     }
 
-    private void setTimer(int seconds){
+    private void setUITimer(int seconds){
         timerLabel.setText(String.format("%02d:%02d:%02d", seconds / 3600, (seconds % 3600) / 60, seconds % 60));
     }
 

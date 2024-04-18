@@ -5,27 +5,18 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class TimerModel {
 
-    private static final TimerModel instance = new TimerModel();
-    private final IntegerProperty timerSeconds = new SimpleIntegerProperty(1200);
+    private static final IntegerProperty timerSeconds = new SimpleIntegerProperty(TimerController.getWorkTimeSeconds());
 
-    private TimerModel() {
-        // Private constructor to enforce singleton pattern
-    }
-
-    public static TimerModel getInstance() {
-        return instance;
-    }
-
-    public int getTimerSeconds() {
+    public static int getTimerSeconds() {
         return timerSeconds.get();
     }
 
-    @SuppressWarnings("exports")
-    public IntegerProperty timerSecondsProperty() {
-        return timerSeconds;
+    public static void setTimerSeconds(int seconds) {
+        timerSeconds.set(seconds);
     }
 
-    public void setTimerSeconds(int timerSeconds) {
-        this.timerSeconds.set(timerSeconds);
+    @SuppressWarnings("exports")
+    public static IntegerProperty timerSecondsProperty() {
+        return timerSeconds;
     }
 }

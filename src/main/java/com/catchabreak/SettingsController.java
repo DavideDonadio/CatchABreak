@@ -1,8 +1,8 @@
 package com.catchabreak;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
+import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,6 +42,8 @@ public class SettingsController {
         TimerController.setWorkTimeMinutes(Integer.parseInt(workTextField.getText()));
         prefs.put("workTimeSeconds", Integer.toString(TimerController.getWorkTimeSeconds()));
 
+        if(TimerController.timeLine.getStatus() == Animation.Status.STOPPED)
+            TimerModel.setTimerSeconds(TimerController.getWorkTimeSeconds());
     }
 
     @FXML

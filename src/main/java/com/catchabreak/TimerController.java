@@ -68,37 +68,30 @@ public class TimerController {
 
     @FXML
     static void pauseTimer() {
-
         timeLine.pause();
     }
 
     static int getWorkTimeMinutes(){
-
         return (WORKTIME / 60);
     }
 
     static int getBreakTimeMinutes(){
-
         return (BREAKTIME / 60);
     }
 
     static int getWorkTimeSeconds(){
-
         return WORKTIME;
     }
 
     static int getBreakTimeSeconds(){
-
         return BREAKTIME;
     }
 
     static void setWorkTimeMinutes(int minutes){
-
         WORKTIME =  minutes * 60;
     }
 
     static void setBreakTimeMinutes(int minutes){
-
         BREAKTIME =  minutes * 60;
     }
 }

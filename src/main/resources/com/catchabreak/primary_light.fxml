@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catchabreak.HomeController">
-   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="70.0" style="-fx-background-color: #A1B2D3;">
+   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="70.0" style="-fx-background-color: #FFEBB7;">
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="13.0" layoutY="14.0" onMouseClicked="#switchToSettings" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/settings.png" />
       </ImageView>
@@ -19,8 +19,8 @@
          <Image url="@../../icons/info.png" />
       </ImageView>
    </AnchorPane>
-   <AnchorPane layoutX="70.0" minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="280.0" style="-fx-background-color: #AEE0EC;">
-      <Label fx:id="timerLabel" layoutX="69.0" layoutY="72.0" prefHeight="44.0" prefWidth="194.0" text="00:00:00" underline="true">
+   <AnchorPane layoutX="70.0" minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="280.0" style="-fx-background-color: #B3E5FC;">
+      <Label fx:id="timerLabel" layoutX="62.0" layoutY="66.0" prefHeight="44.0" prefWidth="151.0" text="00:00:00" underline="true">
          <font>
             <Font name="Gadugi" size="36.0" />
          </font>

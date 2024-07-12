@@ -11,6 +11,8 @@ import javafx.scene.input.MouseEvent;
 
 public class SettingsController {
 
+    private String previousTheme;
+
     @FXML
     private Button backButton;
     @FXML
@@ -27,6 +29,8 @@ public class SettingsController {
         darkMode.setSelected(PreferencesUtil.getTheme().equals("dark") ? true : false);
         workTextField.setText(Integer.toString(PreferencesUtil.getWorkTimeMinutes()));
         breakTextField.setText(Integer.toString(PreferencesUtil.getBreakTimeMinutes()));
+
+        previousTheme = darkMode.isSelected() ? "dark" : "light";
     }
 
     // TODO: USER INPUT VALIDATION
@@ -44,10 +48,18 @@ public class SettingsController {
                 TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
             else TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
         }
+        // Refreshes the current scene if the user changes the theme
+        if(!PreferencesUtil.getTheme().equals(previousTheme))
+            refreshSettingsScene();
     }
 
     @FXML
     private void switchToPrimary() throws IOException {
         App.getSceneManager().switchScene("primary_" + PreferencesUtil.getTheme());
+    }
+
+    @FXML
+    private void refreshSettingsScene() throws IOException {
+        App.getSceneManager().switchScene("settings_" + PreferencesUtil.getTheme());
     }
 }

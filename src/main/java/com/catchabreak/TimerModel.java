@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class TimerModel {
 
-    private static final IntegerProperty timerSeconds = new SimpleIntegerProperty(TimerController.getWorkTimeSeconds());
+    private static final IntegerProperty timerSeconds = new SimpleIntegerProperty(PreferencesUtil.getWorkTimeSeconds());
 
     public static int getTimerSeconds() {
         return timerSeconds.get();

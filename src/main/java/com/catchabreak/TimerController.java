@@ -4,16 +4,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
-import java.util.prefs.Preferences;
 
 
 public class TimerController {
 
     static Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
-    static Preferences prefs = Preferences.userNodeForPackage(TimerController.class);
 
-    static private int WORKTIME = Integer.parseInt(prefs.get("workTimeSeconds", "1200"));
-    static private int BREAKTIME = Integer.parseInt(prefs.get("breakTimeSeconds", "500"));
+    static private int WORKTIME_MINUTES = 20;
+    static private int BREAKTIME_MINUTES = 5;
     static private int numOfBreaks = 0;
     static Boolean inABreak = false;
 
@@ -25,14 +23,14 @@ public class TimerController {
         numOfBreaks++;
         
         timeLine.pause();
-        TimerModel.setTimerSeconds(BREAKTIME);
+        TimerModel.setTimerSeconds(BREAKTIME_MINUTES);
         startTimer();
     }
 
     static void handleRestartImageClick() {
 
-        if(inABreak) TimerModel.setTimerSeconds(BREAKTIME);
-        else TimerModel.setTimerSeconds(WORKTIME);
+        if(inABreak) TimerModel.setTimerSeconds(BREAKTIME_MINUTES);
+        else TimerModel.setTimerSeconds(WORKTIME_MINUTES);
 
         startTimer();
     }
@@ -43,7 +41,7 @@ public class TimerController {
 
         inABreak = false;
         timeLine.pause();
-        TimerModel.setTimerSeconds(WORKTIME);
+        TimerModel.setTimerSeconds(WORKTIME_MINUTES);
         startTimer();
     }
 
@@ -71,27 +69,27 @@ public class TimerController {
         timeLine.pause();
     }
 
-    static int getWorkTimeMinutes(){
-        return (WORKTIME / 60);
+    static int getWorkTimeSeconds(){
+        return (WORKTIME_MINUTES * 60);
     }
 
     static int getBreakTimeMinutes(){
-        return (BREAKTIME / 60);
+        return (BREAKTIME_MINUTES / 60);
     }
 
-    static int getWorkTimeSeconds(){
-        return WORKTIME;
+    static int getWorkTimeMinutes(){
+        return WORKTIME_MINUTES;
     }
 
     static int getBreakTimeSeconds(){
-        return BREAKTIME;
+        return BREAKTIME_MINUTES;
     }
 
     static void setWorkTimeMinutes(int minutes){
-        WORKTIME =  minutes * 60;
+        WORKTIME_MINUTES =  minutes * 60;
     }
 
     static void setBreakTimeMinutes(int minutes){
-        BREAKTIME =  minutes * 60;
+        BREAKTIME_MINUTES =  minutes * 60;
     }
 }

@@ -14,6 +14,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static SceneManager sceneManager;
 
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
@@ -21,14 +22,16 @@ public class App extends Application {
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
         TrayController.setupTray(stage);
 
-        scene = new Scene(loadFXML("primary"), 350, 220);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        sceneManager = new SceneManager(stage, "/css/style.css");
+        sceneManager.switchScene("primary_" + PreferencesUtil.getTheme());
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+
+    public static SceneManager getSceneManager() {
+        return sceneManager;
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

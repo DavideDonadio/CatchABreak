@@ -36,12 +36,10 @@ public class PreferencesUtil {
 
     public static void setBreakTimeMinutes(int minutes){
         prefs.putInt(BREAKTIMEMINUTES_KEY, minutes);
-        TimerController.setBreakTimeMinutes(minutes);
     }
 
     public static void setWorkTimeMinutes(int minutes){
         prefs.putInt(WORKTIMEMINUTES_KEY, minutes);
-        TimerController.setWorkTimeMinutes(minutes);
     }
 
 

@@ -34,12 +34,12 @@
       <ImageView fx:id="restartTimerImage" fitHeight="40.0" fitWidth="40.0" layoutX="185.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/reset.png" />
       </ImageView>
-      <Label fx:id="workLabel" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="46.0" prefWidth="194.0" text="Time to work!" textAlignment="CENTER" textFill="WHITE">
+        <Label fx:id="workLabel" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="46.0" prefWidth="194.0" text="Time to work!" textFill="WHITE" textAlignment="CENTER">
          <font>
             <Font name="Arial" size="32.0" />
          </font>
       </Label>
-      <Label fx:id="breakLabel" contentDisplay="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="46.0" prefWidth="214.0" text="Catch a break!" textAlignment="CENTER" visible="false">
+      <Label fx:id="breakLabel" contentDisplay="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="46.0" prefWidth="214.0" text="Catch a break!" textFill="WHITE" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Arial" size="32.0" />
          </font>

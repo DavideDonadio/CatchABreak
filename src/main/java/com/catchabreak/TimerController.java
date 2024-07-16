@@ -1,21 +1,48 @@
 package com.catchabreak;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
 
-
 public class TimerController {
 
-    static Timeline timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
+    private static TimerController instance;
+    private HomeController homeController;
+    private  Timeline timeLine;
+    private int WORKTIME_MINUTES = 20;
+    private int BREAKTIME_MINUTES = 5;
+    private int numOfBreaks = 0;
+    Boolean inABreak = false;
 
-    static private int WORKTIME_MINUTES = 20;
-    static private int BREAKTIME_MINUTES = 5;
-    static private int numOfBreaks = 0;
-    static Boolean inABreak = false;
+    public TimerController() {
+        this.timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
+    }
+    
+    public static TimerController getInstance(HomeController homeController) {
+        
+        if (instance == null)
+            instance = new TimerController();
+        
+        instance.setHomeController(homeController);
+        return instance;
+    }
 
-    static void handleStartBreak() {
+    public void setHomeController(HomeController homeController){
+        this.homeController = homeController;
+    }
+
+    public void retrieveSettings(){
+
+        WORKTIME_MINUTES = PreferencesUtil.getWorkTimeMinutes();
+        BREAKTIME_MINUTES = PreferencesUtil.getBreakTimeMinutes();
+
+        if(timeLine.getStatus() == Animation.Status.STOPPED)
+            TimerModel.setTimerSeconds(getWorkTimeSeconds());
+    }
+
+    public void handleStartBreak() {
 
         TrayController.sendStartBreakNotification();
 
@@ -23,29 +50,31 @@ public class TimerController {
         numOfBreaks++;
         
         timeLine.pause();
-        TimerModel.setTimerSeconds(BREAKTIME_MINUTES);
+        TimerModel.setTimerSeconds(getBreakTimeSeconds());
+        homeController.displayMessage(inABreak);
         startTimer();
     }
 
-    static void handleRestartImageClick() {
+    public void handleRestartImageClick() {
 
-        if(inABreak) TimerModel.setTimerSeconds(BREAKTIME_MINUTES);
-        else TimerModel.setTimerSeconds(WORKTIME_MINUTES);
+        if(inABreak) TimerModel.setTimerSeconds(getBreakTimeSeconds());
+        else TimerModel.setTimerSeconds(getWorkTimeSeconds());
 
         startTimer();
     }
 
-    static void handleStopBreak() {
+    public void handleStopBreak() {
 
         TrayController.sendStopBreakNotification();
 
         inABreak = false;
         timeLine.pause();
-        TimerModel.setTimerSeconds(WORKTIME_MINUTES);
+        TimerModel.setTimerSeconds(getWorkTimeSeconds());
+        homeController.displayMessage(inABreak);
         startTimer();
     }
 
-    static void decrementTimer() {
+    public void decrementTimer() {
 
         TimerModel.setTimerSeconds(TimerModel.getTimerSeconds() - 1);
 
@@ -58,38 +87,38 @@ public class TimerController {
     }
 
     @FXML
-    static void startTimer() {
+    public void startTimer() {
 
         timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
     }
 
     @FXML
-    static void pauseTimer() {
+    public void pauseTimer() {
         timeLine.pause();
     }
 
-    static int getWorkTimeSeconds(){
+    public int getWorkTimeSeconds(){
         return (WORKTIME_MINUTES * 60);
     }
 
-    static int getBreakTimeMinutes(){
-        return (BREAKTIME_MINUTES / 60);
-    }
-
-    static int getWorkTimeMinutes(){
-        return WORKTIME_MINUTES;
-    }
-
-    static int getBreakTimeSeconds(){
+    public int getBreakTimeMinutes(){
         return BREAKTIME_MINUTES;
     }
 
-    static void setWorkTimeMinutes(int minutes){
-        WORKTIME_MINUTES =  minutes * 60;
+    public int getWorkTimeMinutes(){
+        return WORKTIME_MINUTES;
     }
 
-    static void setBreakTimeMinutes(int minutes){
-        BREAKTIME_MINUTES =  minutes * 60;
+    public int getBreakTimeSeconds(){
+        return (BREAKTIME_MINUTES * 60);
+    }
+
+    public void setWorkTimeMinutes(int minutes){
+        WORKTIME_MINUTES = minutes;
+    }
+
+    public void setBreakTimeMinutes(int minutes){
+        BREAKTIME_MINUTES = minutes;
     }
 }

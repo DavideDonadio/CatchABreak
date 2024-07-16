@@ -12,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 public class SettingsController {
 
     private String previousTheme;
-
     @FXML
     private Button backButton;
     @FXML
@@ -29,7 +28,6 @@ public class SettingsController {
         darkMode.setSelected(PreferencesUtil.getTheme().equals("dark") ? true : false);
         workTextField.setText(Integer.toString(PreferencesUtil.getWorkTimeMinutes()));
         breakTextField.setText(Integer.toString(PreferencesUtil.getBreakTimeMinutes()));
-
         previousTheme = darkMode.isSelected() ? "dark" : "light";
     }
 
@@ -41,13 +39,6 @@ public class SettingsController {
         PreferencesUtil.setBreakTimeMinutes(Integer.parseInt(breakTextField.getText()));
         PreferencesUtil.setWorkTimeMinutes(Integer.parseInt(workTextField.getText()));
 
-        // Updates the timer's seconds in real time after saving the settings
-        if(TimerController.timeLine.getStatus() == Animation.Status.STOPPED){
-
-            if(TimerController.inABreak)
-                TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
-            else TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
-        }
         // Refreshes the current scene if the user changes the theme
         if(!PreferencesUtil.getTheme().equals(previousTheme))
             refreshSettingsScene();

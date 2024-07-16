@@ -6,9 +6,9 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
 
-public class TimerController {
+public class TimerManager {
 
-    private static TimerController instance;
+    private static TimerManager instance;
     private HomeController homeController;
     private  Timeline timeLine;
     private int WORKTIME_MINUTES = 20;
@@ -16,14 +16,14 @@ public class TimerController {
     private int numOfBreaks = 0;
     Boolean inABreak = false;
 
-    public TimerController() {
+    public TimerManager() {
         this.timeLine = new Timeline(new KeyFrame(Duration.seconds(1), event -> decrementTimer()));
     }
     
-    public static TimerController getInstance(HomeController homeController) {
+    public static TimerManager getInstance(HomeController homeController) {
         
         if (instance == null)
-            instance = new TimerController();
+            instance = new TimerManager();
         
         instance.setHomeController(homeController);
         return instance;

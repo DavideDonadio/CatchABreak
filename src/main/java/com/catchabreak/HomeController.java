@@ -23,17 +23,17 @@ public class HomeController {
     @FXML
     private ImageView restartTimerImage = new ImageView();
 
-    private TimerController timerController;
+    private TimerManager timerManager;
 
     // ----------------------------------
 
     public HomeController() {
-        this.timerController = TimerController.getInstance(this);
+        this.timerManager = TimerManager.getInstance(this);
     }
 
     public void initialize() {
 
-        timerController.retrieveSettings(); 
+        timerManager.retrieveSettings(); 
 
         setUITimer(TimerModel.getTimerSeconds());
 
@@ -42,13 +42,13 @@ public class HomeController {
                 setUITimer(newValue.intValue()));
 
         playTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
-                timerController.startTimer());
+                timerManager.startTimer());
 
         stopTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
-                timerController.pauseTimer());
+                timerManager.pauseTimer());
 
         restartTimerImage.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->
-                timerController.handleRestartImageClick());
+                timerManager.handleRestartImageClick());
     }
 
     public void setUITimer(int seconds){

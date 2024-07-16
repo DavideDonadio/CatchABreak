@@ -22,7 +22,7 @@ public class SceneManager {
 
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName + "_" + PreferencesUtil.getTheme() + ".fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 

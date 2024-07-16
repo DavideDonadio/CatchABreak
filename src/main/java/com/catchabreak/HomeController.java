@@ -69,6 +69,6 @@ public class HomeController {
 
     @FXML
     private void switchToSettings() throws IOException {
-        App.getSceneManager().switchScene("settings_" + PreferencesUtil.getTheme());
+        App.getSceneManager().switchScene("settings");
     }
 }

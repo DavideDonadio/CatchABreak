@@ -2,6 +2,7 @@ package com.catchabreak;
 
 import com.dustinredmond.fxtrayicon.FXTrayIcon;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
@@ -23,6 +24,9 @@ public final class TrayController{
         MenuItem settings = new MenuItem("Settings");
         MenuItem stats = new MenuItem("Stats");
         icon.addMenuItems(settings, stats, exit);
+
+        exit.setOnAction(action -> System.exit(0));
+        settings.setOnAction(action -> App.getSceneManager().switchScene("settings"));
     }
 
     static void sendStartBreakNotification(){

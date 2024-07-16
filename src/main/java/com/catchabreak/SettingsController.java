@@ -46,11 +46,11 @@ public class SettingsController {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        App.getSceneManager().switchScene("primary_" + PreferencesUtil.getTheme());
+        App.getSceneManager().switchScene("primary");
     }
 
     @FXML
     private void refreshSettingsScene() throws IOException {
-        App.getSceneManager().switchScene("settings_" + PreferencesUtil.getTheme());
+        App.getSceneManager().switchScene("settings");
     }
 }

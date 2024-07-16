@@ -23,7 +23,7 @@ public class App extends Application {
         TrayController.setupTray(stage);
 
         sceneManager = new SceneManager(stage, "/css/style.css");
-        sceneManager.switchScene("primary_" + PreferencesUtil.getTheme());
+        sceneManager.switchScene("primary");
     }
 
     static void setRoot(String fxml) throws IOException {

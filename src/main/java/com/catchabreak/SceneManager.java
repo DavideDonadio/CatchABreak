@@ -12,7 +12,7 @@ public class SceneManager {
     private Stage stage;
     private String cssPath;
 
-    public SceneManager(Stage stage, String cssPath){
+    public SceneManager(@SuppressWarnings("exports") Stage stage, String cssPath){
 
         this.stage = stage;
         this.cssPath = cssPath;

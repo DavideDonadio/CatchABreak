@@ -1,9 +1,9 @@
 package com.catchabreak;
 
 import java.io.IOException;
-
-import javafx.animation.Animation;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -30,14 +30,27 @@ public class SettingsController {
         breakTextField.setText(Integer.toString(PreferencesUtil.getBreakTimeMinutes()));
         previousTheme = darkMode.isSelected() ? "dark" : "light";
     }
-
-    // TODO: USER INPUT VALIDATION
+    
     @FXML
-    public void saveSettings(MouseEvent event) throws IOException {
+    public void saveSettings(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 
         PreferencesUtil.setTheme(darkMode.isSelected() ? "dark" : "light");
-        PreferencesUtil.setBreakTimeMinutes(Integer.parseInt(breakTextField.getText()));
-        PreferencesUtil.setWorkTimeMinutes(Integer.parseInt(workTextField.getText()));
+
+        try {
+
+            int breakTime = Integer.parseInt(breakTextField.getText());
+            int workTime = Integer.parseInt(workTextField.getText());
+            
+            PreferencesUtil.setBreakTimeMinutes(breakTime);
+            PreferencesUtil.setWorkTimeMinutes(workTime);
+        } 
+        catch(NumberFormatException e) {
+
+            Alert errorAlert = new Alert(AlertType.ERROR);
+            errorAlert.setHeaderText("Input not valid");
+            errorAlert.setContentText("You must insert a valid number.");
+            errorAlert.showAndWait();
+        }
 
         // Refreshes the current scene if the user changes the theme
         if(!PreferencesUtil.getTheme().equals(previousTheme))

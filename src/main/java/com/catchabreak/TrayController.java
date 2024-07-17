@@ -1,8 +1,6 @@
 package com.catchabreak;
 
 import com.dustinredmond.fxtrayicon.FXTrayIcon;
-
-import javafx.event.ActionEvent;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 

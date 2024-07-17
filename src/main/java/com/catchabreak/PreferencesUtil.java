@@ -10,6 +10,9 @@ public class PreferencesUtil {
     private static final String BREAKTIMEMINUTES_KEY = "BTM";
     private static final String WORKTIMEMINUTES_KEY = "WTS";
     private static final String NUMOFBREAKS_KEY = "BREAKS";
+    private static final String NUMOFTIMERSTARTED_KEY = "TIMERSTART";
+    private static final String NUMOFTIMERSTOPPED_KEY = "TIMERSTOP";
+    private static final String NUMOFTIMERRESTARTED_KEY = "TIMERESTART";
 
     public static String getTheme(){
         return prefs.get(THEME_KEY, "light");
@@ -48,6 +51,31 @@ public class PreferencesUtil {
     }
 
     public static void addBreak(){
-        prefs.putInt(NUMOFBREAKS_KEY, getNumberOfBreaks());
+        prefs.putInt(NUMOFBREAKS_KEY, getNumberOfBreaks() + 1);
     }
+
+    public static int getNumberOfTimerStarted(){
+        return (prefs.getInt(NUMOFTIMERSTARTED_KEY, 0));
+    }
+
+    public static int getNumberOfTimerStopped(){
+        return (prefs.getInt(NUMOFTIMERSTOPPED_KEY, 0));
+    }
+
+    public static int getNumberOfTimerRestarted(){
+        return (prefs.getInt(NUMOFTIMERRESTARTED_KEY, 0));
+    }
+
+    public static void addTimerStart(){
+        prefs.putInt(NUMOFTIMERSTARTED_KEY, getNumberOfTimerStarted() + 1);
+    }   
+
+    public static void addTimerStop(){
+        prefs.putInt(NUMOFTIMERSTOPPED_KEY, getNumberOfTimerStopped() + 1);
+    }   
+
+    public static void addTimerRestart(){
+        prefs.putInt(NUMOFTIMERRESTARTED_KEY, getNumberOfTimerRestarted() + 1);
+    }   
+        
 }

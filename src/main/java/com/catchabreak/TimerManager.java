@@ -52,6 +52,8 @@ public class TimerManager {
         if(inABreak) TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
         else TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
 
+
+        PreferencesUtil.addTimerRestart();
         startTimer();
     }
 
@@ -82,12 +84,14 @@ public class TimerManager {
     public void startTimer() {
 
         timeLine.setCycleCount(Timeline.INDEFINITE);
-        timeLine.play();
+        timeLine.play();    
+        PreferencesUtil.addTimerStart();
     }
 
     @FXML
     public void pauseTimer() {
         timeLine.pause();
+        PreferencesUtil.addTimerStop();
     }
 
 }

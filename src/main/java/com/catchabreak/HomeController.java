@@ -33,8 +33,6 @@ public class HomeController {
 
     public void initialize() {
 
-        timerManager.retrieveSettings(); 
-
         setUITimer(TimerModel.getTimerSeconds());
 
         // Modifies timer seconds on the UI every time timerSeconds gets updated

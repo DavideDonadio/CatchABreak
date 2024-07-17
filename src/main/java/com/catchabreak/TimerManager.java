@@ -3,6 +3,7 @@ package com.catchabreak;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.Animation.Status;
 import javafx.fxml.FXML;
 import javafx.util.Duration;
 
@@ -11,9 +12,6 @@ public class TimerManager {
     private static TimerManager instance;
     private HomeController homeController;
     private  Timeline timeLine;
-    private int WORKTIME_MINUTES = 20;
-    private int BREAKTIME_MINUTES = 5;
-    private int numOfBreaks = 0;
     Boolean inABreak = false;
 
     public TimerManager() {
@@ -26,6 +24,9 @@ public class TimerManager {
             instance = new TimerManager();
         
         instance.setHomeController(homeController);
+        if(instance.timeLine.getStatus() == Status.STOPPED)
+            TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
+
         return instance;
     }
 
@@ -33,32 +34,23 @@ public class TimerManager {
         this.homeController = homeController;
     }
 
-    public void retrieveSettings(){
-
-        WORKTIME_MINUTES = PreferencesUtil.getWorkTimeMinutes();
-        BREAKTIME_MINUTES = PreferencesUtil.getBreakTimeMinutes();
-
-        if(timeLine.getStatus() == Animation.Status.STOPPED)
-            TimerModel.setTimerSeconds(getWorkTimeSeconds());
-    }
-
     public void handleStartBreak() {
 
         TrayController.sendStartBreakNotification();
 
         inABreak = true;
-        numOfBreaks++;
+        PreferencesUtil.addBreak();
         
         timeLine.pause();
-        TimerModel.setTimerSeconds(getBreakTimeSeconds());
+        TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
         homeController.displayMessage(inABreak);
         startTimer();
     }
 
     public void handleRestartImageClick() {
 
-        if(inABreak) TimerModel.setTimerSeconds(getBreakTimeSeconds());
-        else TimerModel.setTimerSeconds(getWorkTimeSeconds());
+        if(inABreak) TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
+        else TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
 
         startTimer();
     }
@@ -69,7 +61,7 @@ public class TimerManager {
 
         inABreak = false;
         timeLine.pause();
-        TimerModel.setTimerSeconds(getWorkTimeSeconds());
+        TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
         homeController.displayMessage(inABreak);
         startTimer();
     }
@@ -98,27 +90,4 @@ public class TimerManager {
         timeLine.pause();
     }
 
-    public int getWorkTimeSeconds(){
-        return (WORKTIME_MINUTES * 60);
-    }
-
-    public int getBreakTimeMinutes(){
-        return BREAKTIME_MINUTES;
-    }
-
-    public int getWorkTimeMinutes(){
-        return WORKTIME_MINUTES;
-    }
-
-    public int getBreakTimeSeconds(){
-        return (BREAKTIME_MINUTES * 60);
-    }
-
-    public void setWorkTimeMinutes(int minutes){
-        WORKTIME_MINUTES = minutes;
-    }
-
-    public void setBreakTimeMinutes(int minutes){
-        BREAKTIME_MINUTES = minutes;
-    }
 }

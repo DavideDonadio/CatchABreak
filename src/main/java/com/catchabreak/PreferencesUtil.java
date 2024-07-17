@@ -9,6 +9,7 @@ public class PreferencesUtil {
     private static final String THEME_KEY = "THEME";
     private static final String BREAKTIMEMINUTES_KEY = "BTM";
     private static final String WORKTIMEMINUTES_KEY = "WTS";
+    private static final String NUMOFBREAKS_KEY = "BREAKS";
 
     public static String getTheme(){
         return prefs.get(THEME_KEY, "light");
@@ -42,5 +43,11 @@ public class PreferencesUtil {
         prefs.putInt(WORKTIMEMINUTES_KEY, minutes);
     }
 
+    public static int getNumberOfBreaks(){
+        return (prefs.getInt(NUMOFBREAKS_KEY, 0));
+    }
 
+    public static void addBreak(){
+        prefs.putInt(NUMOFBREAKS_KEY, getNumberOfBreaks());
+    }
 }

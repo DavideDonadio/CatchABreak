@@ -52,9 +52,8 @@ public class TimerManager {
         if(inABreak) TimerModel.setTimerSeconds(PreferencesUtil.getBreakTimeSeconds());
         else TimerModel.setTimerSeconds(PreferencesUtil.getWorkTimeSeconds());
 
-
         PreferencesUtil.addTimerRestart();
-        startTimer();
+        startTimerFromRestart();
     }
 
     public void handleStopBreak() {
@@ -89,9 +88,21 @@ public class TimerManager {
     }
 
     @FXML
+    private void startTimerFromRestart() {
+        
+        timeLine.setCycleCount(Timeline.INDEFINITE);
+        timeLine.play();   
+    }
+
+    @FXML
     public void pauseTimer() {
         timeLine.pause();
         PreferencesUtil.addTimerStop();
+    }
+
+    @SuppressWarnings("exports")
+    public Animation.Status getTimeLineStatus(){
+        return timeLine.getStatus();
     }
 
 }

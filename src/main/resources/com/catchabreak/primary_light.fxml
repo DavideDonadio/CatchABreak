@@ -28,10 +28,10 @@
       <ImageView fx:id="playTimerImage" fitHeight="40.0" fitWidth="40.0" layoutX="49.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/play.png" />
       </ImageView>
-      <ImageView fx:id="stopTimerImage" fitHeight="40.0" fitWidth="40.0" layoutX="117.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="stopTimerImage" disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="117.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/pause.png" />
       </ImageView>
-      <ImageView fx:id="restartTimerImage" fitHeight="40.0" fitWidth="40.0" layoutX="185.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="restartTimerImage" disable="true" fitHeight="40.0" fitWidth="40.0" layoutX="185.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/reset.png" />
       </ImageView>
       <Label fx:id="workLabel" contentDisplay="CENTER" layoutX="40.0" layoutY="14.0" prefHeight="46.0" prefWidth="194.0" text="Time to work!" textAlignment="CENTER">

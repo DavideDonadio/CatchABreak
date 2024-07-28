@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.catchabreak.SettingsController">
    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="350.0" style="-fx-background-color: #B3E5FC;">
-      <Label layoutX="120.0" text="Settings">
+      <Label layoutX="106.0" text="SETTINGS">
          <font>
             <Font size="32.0" />
          </font>
@@ -39,6 +39,6 @@
          </font>
       </Label>
       <Button fx:id="saveButton" layoutX="279.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="25.0" prefWidth="57.0" text="Save" />
-      <CheckBox fx:id="darkMode" layoutX="253.0" layoutY="20.0" mnemonicParsing="false" text="Dark mode" />
+      <CheckBox fx:id="darkMode" layoutX="135.0" layoutY="168.0" mnemonicParsing="false" text="Dark mode" />
    </AnchorPane>
 </Pane>

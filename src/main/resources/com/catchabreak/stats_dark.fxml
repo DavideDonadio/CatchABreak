@@ -12,53 +12,43 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label layoutX="12.0" layoutY="70.0" text="Number of breaks: " textFill="WHITE">
+      <Label layoutX="12.0" layoutY="60.0" text="Number of breaks: " textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#switchToPrimary" prefHeight="25.0" prefWidth="57.0" text="Back" />
-      <Label layoutX="12.0" layoutY="95.0" text="Time spent using the app: " textFill="WHITE">
+      <Button fx:id="backButton" layoutX="279.0" layoutY="181.0" mnemonicParsing="false" onMouseClicked="#switchToPrimary" prefHeight="25.0" prefWidth="57.0" text="Back" />
+      <Label layoutX="12.0" layoutY="85.0" text="Timer started: " textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="12.0" layoutY="120.0" text="Timer started: " textFill="WHITE">
+      <Label layoutX="12.0" layoutY="110.0" text="Timer stopped: " textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="12.0" layoutY="145.0" text="Timer stopped: " textFill="WHITE">
+      <Label layoutX="12.0" layoutY="135.0" text="Timer restarted: " textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="12.0" layoutY="170.0" text="Timer restarted: " textFill="WHITE">
+      <Label fx:id="numOfBreaksLabel" layoutX="303.0" layoutY="60.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="numOfBreaksLabel" layoutX="303.0" layoutY="70.0" text="0" textFill="WHITE">
+      <Label fx:id="timerStartedLabel" layoutX="303.0" layoutY="85.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="timeSpentLabel" layoutX="303.0" layoutY="95.0" text="0" textFill="WHITE">
+      <Label fx:id="timerStoppedLabel" layoutX="303.0" layoutY="110.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="timerStartedLabel" layoutX="303.0" layoutY="120.0" text="0" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="timerStoppedLabel" layoutX="303.0" layoutY="145.0" text="0" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="timerRestartedLabel" layoutX="303.0" layoutY="170.0" text="0" textFill="WHITE">
+      <Label fx:id="timerRestartedLabel" layoutX="303.0" layoutY="135.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

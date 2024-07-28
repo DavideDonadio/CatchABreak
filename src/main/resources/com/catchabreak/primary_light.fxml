@@ -15,7 +15,7 @@
       <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="13.0" layoutY="88.0" onMouseClicked="#switchToStats" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/stats.png" />
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="13.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="13.0" layoutY="162.0" onMouseClicked="#switchToInfo" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../icons/info.png" />
       </ImageView>
    </AnchorPane>

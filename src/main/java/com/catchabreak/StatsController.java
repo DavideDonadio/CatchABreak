@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 
 public class StatsController {
 
@@ -22,7 +21,6 @@ public class StatsController {
     public void initialize(){
 
         numOfBreaksLabel.setText(Integer.toString(PreferencesUtil.getNumberOfBreaks()));
-        //timeSpentlLabel.setText(Integer.toString(PreferencesUtil.GET()));
         timerStartedLabel.setText(Integer.toString(PreferencesUtil.getNumberOfTimerStarted()));
         timerStoppedLabel.setText(Integer.toString(PreferencesUtil.getNumberOfTimerStopped()));
         timerRestartedLabel.setText(Integer.toString(PreferencesUtil.getNumberOfTimerRestarted()));

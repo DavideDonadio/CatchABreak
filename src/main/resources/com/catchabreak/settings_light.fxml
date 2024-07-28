@@ -15,7 +15,6 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <CheckBox layoutX="253.0" layoutY="47.0" mnemonicParsing="false" text="On startup" />
       <Label layoutX="65.0" layoutY="90.0" text="Work time:">
          <font>
             <Font size="15.0" />
@@ -40,6 +39,6 @@
          </font>
       </Label>
       <Button fx:id="saveButton" layoutX="279.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="25.0" prefWidth="57.0" text="Save" />
-      <CheckBox fx:id= "darkMode" layoutX="253.0" layoutY="20.0" mnemonicParsing="false" text="Dark mode" />
+      <CheckBox fx:id="darkMode" layoutX="253.0" layoutY="20.0" mnemonicParsing="false" text="Dark mode" />
    </AnchorPane>
 </Pane>

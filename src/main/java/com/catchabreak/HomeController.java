@@ -106,4 +106,9 @@ public class HomeController {
     private void switchToStats() throws IOException {
         App.getSceneManager().switchScene("stats");
     }
+
+    @FXML
+    private void switchToInfo() throws IOException {
+        App.getSceneManager().switchScene("info");
+    }
 }

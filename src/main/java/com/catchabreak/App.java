@@ -5,11 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -26,6 +22,7 @@ public class App extends Application {
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
 
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
+        stage.setResizable(false);
         manageExitButtonPress(stage);
         TrayController.setupTray(stage);
 

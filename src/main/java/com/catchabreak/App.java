@@ -1,11 +1,17 @@
 package com.catchabreak;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 /**
@@ -20,12 +26,30 @@ public class App extends Application {
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
 
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/icons/icon.png"))); // Setting app icon
+        manageExitButtonPress(stage);
         TrayController.setupTray(stage);
 
         sceneManager = new SceneManager(stage);
         sceneManager.switchScene("primary");
     }
 
+    public void manageExitButtonPress(@SuppressWarnings("exports") Stage stage) {
+
+        Platform.setImplicitExit(true);
+        stage.setOnCloseRequest((WindowEvent event) -> {
+
+            if (PreferencesUtil.minimizeOnExit() == true) {
+
+                stage.hide();
+                event.consume();
+
+            } else {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+    }
+    
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }

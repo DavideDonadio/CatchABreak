@@ -13,9 +13,19 @@ public class PreferencesUtil {
     private static final String NUMOF_TIMERSTARTED_KEY = "TIMERSTART";
     private static final String NUMOF_TIMERSTOPPED_KEY = "TIMERSTOP";
     private static final String NUMOF_TIMER_RESTARTED_KEY = "TIMERESTART";
+    private static final String MINIMIZE_ON_EXIT = "MINIMIZE";
+    
 
     public static String getTheme(){
         return prefs.get(THEME_KEY, "light");
+    }
+
+    public static Boolean minimizeOnExit(){
+        return prefs.getBoolean(MINIMIZE_ON_EXIT, false);
+    }
+
+    public static void setMinimizeOnExit(Boolean bool){
+        prefs.putBoolean (MINIMIZE_ON_EXIT, bool);
     }
 
     public static void setTheme(String THEME){

@@ -22,9 +22,12 @@ public class SettingsController {
     private TextField breakTextField;
     @FXML
     private CheckBox darkMode;
+    @FXML
+    private CheckBox minimizeOnExit;
 
     public void initialize() {
 
+        minimizeOnExit.setSelected(PreferencesUtil.minimizeOnExit() ? true : false);
         darkMode.setSelected(PreferencesUtil.getTheme().equals("dark") ? true : false);
         workTextField.setText(Integer.toString(PreferencesUtil.getWorkTimeMinutes()));
         breakTextField.setText(Integer.toString(PreferencesUtil.getBreakTimeMinutes()));
@@ -35,6 +38,7 @@ public class SettingsController {
     public void saveSettings(@SuppressWarnings("exports") MouseEvent event) throws IOException {
 
         PreferencesUtil.setTheme(darkMode.isSelected() ? "dark" : "light");
+        PreferencesUtil.setMinimizeOnExit(minimizeOnExit.isSelected() ? true : false);
 
         try {
 

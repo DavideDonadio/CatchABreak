@@ -39,6 +39,7 @@
          </font>
       </Label>
       <Button fx:id="saveButton" layoutX="279.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#saveSettings" prefHeight="25.0" prefWidth="57.0" text="Save" />
-      <CheckBox fx:id="darkMode" layoutX="135.0" layoutY="168.0" mnemonicParsing="false" text="Dark mode" textFill="WHITE" />
+      <CheckBox fx:id="darkMode" layoutX="136.0" layoutY="166.0" mnemonicParsing="false" text="Dark mode" textFill="WHITE" />
+      <CheckBox fx:id="minimizeOnExit" layoutX="122.0" layoutY="189.0" mnemonicParsing="false" text="Minimize on Exit" textFill="WHITE" />
    </AnchorPane>
 </Pane>

@@ -10,12 +10,10 @@ import javafx.stage.Stage;
 public class SceneManager {
 
     private Stage stage;
-    private String cssPath;
 
-    public SceneManager(@SuppressWarnings("exports") Stage stage, String cssPath){
+    public SceneManager(@SuppressWarnings("exports") Stage stage){
 
         this.stage = stage;
-        this.cssPath = cssPath;
     }
 
     public void switchScene(String fxmlFileName) {
@@ -25,8 +23,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName + "_" + PreferencesUtil.getTheme() + ".fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-
-            scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+            
             stage.setScene(scene);
             stage.show();
 

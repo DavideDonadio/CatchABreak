@@ -26,12 +26,12 @@
             <Font size="14.8" />
          </font>
       </Text>
-      <ImageView fx:id="githubImage" fitHeight="40.0" fitWidth="40.0" layoutX="125.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="githubImage" fitHeight="40.0" fitWidth="40.0" layoutX="152.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/github-mark-white.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="4.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project hosted on ">
+      <Text fill="WHITE" layoutX="4.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find more on GitHub: ">
          <font>
             <Font size="14.8" />
          </font>

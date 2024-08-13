@@ -1,4 +1,4 @@
-package com.catchabreak;
+package com.catchabreak.Utils;
 
 import java.io.IOException;
 
@@ -19,8 +19,7 @@ public class SceneManager {
     public void switchScene(String fxmlFileName) {
 
         try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName + "_" + PreferencesUtil.getTheme() + ".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/catchabreak/" + fxmlFileName + "_" + PreferencesUtil.getTheme() + ".fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             

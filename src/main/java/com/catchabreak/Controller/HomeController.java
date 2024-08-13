@@ -1,6 +1,10 @@
-package com.catchabreak;
+package com.catchabreak.Controller;
 
 import java.io.IOException;
+import com.catchabreak.Timer.TimerManager;
+import com.catchabreak.Timer.TimerModel;
+
+import com.catchabreak.App;
 
 import javafx.animation.Animation;
 import javafx.fxml.FXML;

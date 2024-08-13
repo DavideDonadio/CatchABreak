@@ -1,4 +1,4 @@
-package com.catchabreak;
+package com.catchabreak.Utils;
 
 import java.util.prefs.Preferences;
 

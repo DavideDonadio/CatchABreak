@@ -1,5 +1,5 @@
-package com.catchabreak;
 
+package com.catchabreak;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+
+import com.catchabreak.Controller.TrayController;
+import com.catchabreak.Utils.*;
 /**
  * JavaFX App
  */

@@ -1,7 +1,8 @@
-package com.catchabreak;
+package com.catchabreak.Controller;
 
 import java.io.IOException;
 import java.net.URI;
+import com.catchabreak.App;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

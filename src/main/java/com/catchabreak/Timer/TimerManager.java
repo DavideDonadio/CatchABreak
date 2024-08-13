@@ -1,4 +1,8 @@
-package com.catchabreak;
+package com.catchabreak.Timer;
+
+import com.catchabreak.Controller.HomeController;
+import com.catchabreak.Controller.TrayController;
+import com.catchabreak.Utils.PreferencesUtil;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

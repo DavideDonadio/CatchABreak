@@ -1,6 +1,9 @@
-package com.catchabreak;
+package com.catchabreak.Controller;
 
 import java.io.IOException;
+import com.catchabreak.App;
+import com.catchabreak.Utils.PreferencesUtil;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

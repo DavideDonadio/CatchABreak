@@ -6,6 +6,6 @@ module com.catchabreak {
     requires java.prefs;
     requires java.desktop;
 
-    opens com.catchabreak to javafx.fxml;
+    opens com.catchabreak.Controller to javafx.fxml;
     exports com.catchabreak;
 }

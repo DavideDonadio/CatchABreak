@@ -1,4 +1,6 @@
-package com.catchabreak;
+package com.catchabreak.Timer;
+
+import com.catchabreak.Utils.PreferencesUtil;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
